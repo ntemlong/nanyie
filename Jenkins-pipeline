@@ -1,0 +1,30 @@
+pipeline {
+    agent {
+	    label 'master'
+    }
+	stages {
+	    stage('make directory') {
+            steps {
+                sh """
+                mkdir /tmp/chino
+                """
+                }
+        }
+	
+	    stage('create file') {
+            steps {
+                sh """
+                touch /tmp/coco
+                """
+                }
+        }
+
+	    stage('copy directory') {
+            steps {
+                sh """
+                cp /tmp/coco /tmp/chino
+                """
+                }
+        }		
+    }		
+}
